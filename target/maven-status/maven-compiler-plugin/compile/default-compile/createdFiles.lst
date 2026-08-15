@@ -1,1 +1,5 @@
+com\mycompany\promptzal\Tipos.class
+com\mycompany\promptzal\ErrorLexico.class
 com\mycompany\promptzal\Promptzal.class
+com\mycompany\promptzal\Token.class
+com\mycompany\promptzal\AnalizadorLexico.class

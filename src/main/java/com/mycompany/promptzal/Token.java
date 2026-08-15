@@ -12,7 +12,7 @@ public class Token {
         this.lexema = lexema;
         this.tipo = tipo;
         this.fila = fila;
-        this.columna = columna;
+        this.columna = col;
     }
     
     public int getId() {
