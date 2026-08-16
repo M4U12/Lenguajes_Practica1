@@ -10,6 +10,7 @@ public class Tipos {
     public static final String LITERAL_ENTERO = "Literal Entero";
     public static final String LITERAL_DECIMAL = "Literal Decimal";
     public static final String OPERADOR = "Operador";
+    public static final String FUNCION = "Función";
     public static final String DELIMITADOR = "Delimitador";
     public static final String DESCONOCIDO = "Desconocido";
 }

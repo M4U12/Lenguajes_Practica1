@@ -118,8 +118,13 @@ public class AnalizadorLexico {
         if (lexema.equals("PREGUNTAR") || lexema.equals("GENERAR") || 
             lexema.equals("RESUMIR") || lexema.equals("ANALIZAR") || 
             lexema.equals("TRADUCIR") || lexema.equals("CLASIFICAR") || 
-            lexema.equals("EXTRAER") || lexema.equals("CARGAR")) {
+            lexema.equals("EXTRAER")) {
             return Tipos.COMANDO_IA;
+        }
+        
+        //funcion
+        if (lexema.equals("CARGAR")) {
+            return Tipos.FUNCION;
         }
         
         // conectores que son palabras
@@ -138,7 +143,7 @@ public class AnalizadorLexico {
         avanzar();
     }
     
-    private void procesarOperadorOConector(char actual, int fila, int col) {
+    public void procesarOperadorOConector(char actual, int fila, int col) {
         if (actual == '+' || actual == '=') {
             tokens.add(new Token(contadorTokens++, String.valueOf(actual), Tipos.OPERADOR, fila, col));
             avanzar();
@@ -153,7 +158,7 @@ public class AnalizadorLexico {
         }
     }
 
-    private void procesarDirectiva(int fila, int col) {
+    public void procesarDirectiva(int fila, int col) {
         StringBuilder lexemaBuilder = new StringBuilder();
         lexemaBuilder.append(obtenerCaracter()); // guarda la '@'
         avanzar();
@@ -165,7 +170,7 @@ public class AnalizadorLexico {
         tokens.add(new Token(contadorTokens++, lexemaBuilder.toString(), Tipos.DIRECTIVA, fila, col));
     }
 
-    private void procesarPalabra(int fila, int col) {
+    public void procesarPalabra(int fila, int col) {
         StringBuilder lexemaBuilder = new StringBuilder();
         
         while (posicionActual < codigoFuente.length() && 
@@ -179,7 +184,7 @@ public class AnalizadorLexico {
         tokens.add(new Token(contadorTokens++, lexema, tipoToken, fila, col));
     }
 
-    private void procesarNumero(int fila, int col) {
+    public void procesarNumero(int fila, int col) {
         StringBuilder lexemaBuilder = new StringBuilder();
         boolean tienePunto = false;
 
@@ -206,7 +211,7 @@ public class AnalizadorLexico {
         }
     }
 
-    private void procesarComentarios(int fila, int col) {
+    public void procesarComentarios(int fila, int col) {
         avanzar(); // avanza para ver que sigue después de '/'
         char siguiente = obtenerCaracter();
         
@@ -241,7 +246,7 @@ public class AnalizadorLexico {
         }
     }
 
-    private void procesarCadena(int fila, int col) {
+    public void procesarCadena(int fila, int col) {
         StringBuilder lexemaBuilder = new StringBuilder();
         lexemaBuilder.append(obtenerCaracter()); // guarda la primera comilla
         avanzar();
